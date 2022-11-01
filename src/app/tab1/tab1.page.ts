@@ -1,7 +1,9 @@
+import { DadosService } from './../services/dados.service';
 import { IFilme } from '../models/IFilme.model';
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -19,7 +21,8 @@ export class Tab1Page {
       duracao: '2h 6m',
       classificacao: 75,
       cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/77zENVKgbc4bhmlLfHRUbVZ99N5.jpg',
-      generos: ['Ação', 'Comédia', 'Thriller']
+      generos: ['Ação', 'Comédia', 'Thriller'],
+      pagina: '/trem-bala'
     },
     {
       nome: 'Adão Negro (2022)',
@@ -27,13 +30,21 @@ export class Tab1Page {
       duracao: '2h 5m',
       classificacao: 70,
       cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9z256FFPDsL7kSVJ9oyLELaN1ph.jpg',
-      generos: ['Ação', 'Fantasia', 'Ficção científica']
+      generos: ['Ação', 'Fantasia', 'Ficção científica'],
+      pagina: '/adao-negro'
     },
   ];
 
   constructor(
     public alertController: AlertController,
-    public toastController: ToastController) {}
+    public toastController: ToastController,
+    public dadosService: DadosService,
+    public route: Router) {}
+
+    exibirFilme(filme: IFilme) {
+      this.dadosService.guardarDados('filme', filme);
+      this.route.navigateByUrl('/dados-filme');
+    }
 
   async exibirAlertaFavorito() {
     const alert = await this.alertController.create({
