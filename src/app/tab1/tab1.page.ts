@@ -1,3 +1,4 @@
+import { IFilme } from '../models/IFilme.model';
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
@@ -8,6 +9,27 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+
+  titulo = 'Vídeos';
+
+  listaVideos: IFilme [] = [
+    {
+      nome: 'Trem-Bala (2022)',
+      lancamento: '04/08/2022',
+      duracao: '2h 6m',
+      classificacao: 75,
+      cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/77zENVKgbc4bhmlLfHRUbVZ99N5.jpg',
+      generos: ['Ação', 'Comédia', 'Thriller']
+    },
+    {
+      nome: 'Adão Negro (2022)',
+      lancamento: '20/10/2022',
+      duracao: '2h 5m',
+      classificacao: 70,
+      cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9z256FFPDsL7kSVJ9oyLELaN1ph.jpg',
+      generos: ['Ação', 'Fantasia', 'Ficção científica']
+    },
+  ];
 
   constructor(
     public alertController: AlertController,

@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="dark">
     <ion-title>
-      Videos App
+      {{ titulo }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,50 +11,27 @@
   <ion-searchbar placeholder="Buscar"></ion-searchbar>
 
   <ion-list>
-    <ion-item-sliding>
+    <ion-item-sliding *ngFor="let filme of listaVideos">
       <ion-item lines="full">
         <ion-thumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/77zENVKgbc4bhmlLfHRUbVZ99N5.jpg" />
+          <img [src]="filme.cartaz" />
         </ion-thumbnail>
 
         <ion-label class="ion-text-wrap">
           <div>
-            <h1>Trem-Bala (2022)</h1>
-            <p>04/08/2022 (BR) - 2h 6m </p>
-            <p>Ação, Comédia, Thriller</p>
+            <h1>{{ filme.nome }}</h1>
+            <p>{{ filme.lancamento }} - {{ filme.duracao }}</p>
+            <ion-badge color="light" *ngFor="let genero of filme.generos">
+              {{ genero }}
+            </ion-badge>
           </div>
         </ion-label>
 
-        <ion-chip color="success" outline>75%</ion-chip>
+        <ion-chip color="success" outline>{{ filme.classificacao }}%</ion-chip>
       </ion-item>
 
       <ion-item-options side="end">
         <ion-item-option color="warning"(click)="exibirAlertaFavorito()">
-          <ion-icon slot="icon-only" name="star"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <ion-item-sliding>
-      <ion-item lines="full">
-        <ion-thumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9z256FFPDsL7kSVJ9oyLELaN1ph.jpg" />
-        </ion-thumbnail>
-
-        <ion-label class="ion-text-wrap">
-          <div>
-            <h1>Adão Negro (2022)</h1>
-            <p>20/10/2022 (BR) - 2h 5m </p>
-            <p>Ação, Fantasia, Ficção científica
-            </p>
-          </div>
-        </ion-label>
-
-        <ion-chip color="success" outline>70%</ion-chip>
-      </ion-item>
-
-      <ion-item-options side="end">
-        <ion-item-option color="warning" (click)="exibirAlertaFavorito()">
           <ion-icon slot="icon-only" name="star"></ion-icon>
         </ion-item-option>
       </ion-item-options>
