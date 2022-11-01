@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AdaoNegroPageRoutingModule } from './adao-negro-routing.module';
+import { LoginPageRoutingModule } from './login-routing.module';
 
-import { AdaoNegroPage } from './adao-negro.page';
+import { LoginPage } from './login.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdaoNegroPageRoutingModule
+    LoginPageRoutingModule
   ],
-  declarations: [AdaoNegroPage]
+  declarations: [LoginPage]
 })
-export class AdaoNegroPageModule {}
+export class LoginPageModule {}
